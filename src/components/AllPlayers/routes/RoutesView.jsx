@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { AllPlayersContainer } from '../containers';
+import { UploadAttendanceContainer } from '../containers';
 
 const RoutesView = () => {
   return (
     <Switch>
-      <Route exact path="/" component={AllPlayersContainer} />
+      <Route exact path="/" component={UploadAttendanceContainer} />
     </Switch>
   );
 };
