@@ -15,9 +15,11 @@ class UploadAttendanceContainer extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const formData = new FormData(); 
-    formData.append(this.state.file, this.state.file.name); 
-    console.log("HERE", this.state.file);
+    console.log(typeof this.state.file)
+    formData.append(this.state.file.name, this.state.file); 
+    console.log("File:", this.state.file);
     axios.post('http://localhost:8080/api/students/attendance', formData)
+    .then(res => {console.log(res)}).catch((error) => console.error(error));
   }
   
   render() {

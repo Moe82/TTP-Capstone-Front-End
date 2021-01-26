@@ -5,7 +5,7 @@ import { UploadAttendanceContainer } from '../containers';
 const RoutesView = () => {
   return (
     <Switch>
-      <Route exact path="/" component={UploadAttendanceContainer} />
+      <Route exact path="/courses/:id/upload" component={UploadAttendanceContainer} />
     </Switch>
   );
 };
