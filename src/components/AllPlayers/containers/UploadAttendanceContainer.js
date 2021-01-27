@@ -29,7 +29,7 @@ class UploadAttendanceContainer extends Component {
     formData.append(this.state.file.name, this.state.file);
     console.log("File:", this.state.file);
     console.log("Binary String:", this.state.base64TextString);
-    axios.post('http://localhost:8080/api/students/attendance', {
+    axios.post('http://localhost:8096/api/students/attendance', {
       imgToBase64: this.state.base64TextString
     })
       .then(res => { console.log(res) }).catch((error) => console.error(error));
