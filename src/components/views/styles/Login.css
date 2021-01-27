@@ -1,4 +1,23 @@
+/* @media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+    background-color: blue;
+  }
 
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+} */
+
+.login-form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin:auto;
+  height: 100%;
+}
+/* 
 
 .container {
   width: 700px;
@@ -22,7 +41,7 @@ form {
   background-color: aquamarine; /* to be deleted*/
   
   
-}
+/* }
 .message {
   position: absolute;
   background: white;
@@ -32,9 +51,9 @@ form {
   transform: translateX(100%);
   z-index: 4;
 
-}
+} */
 
-.message .button {
+/* .message .button {
   margin: 5px 0;
 }
 
@@ -53,10 +72,10 @@ form {
   height: 50px;
   color: #809bce;
   font-family: "Playfair Display", serif;
-}
+} */
 
 
-form {
+/* form {
   width: 70%;
 }
 form > * {
@@ -96,5 +115,5 @@ form input:focus {
   background: linear-gradient(45deg, #809bce, #9893da);
   font-family: "Playfair Display", serif;
   cursor: pointer;
-}
+} */ 
 
