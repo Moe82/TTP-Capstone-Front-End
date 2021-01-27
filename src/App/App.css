@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar{
+  height: 120px;
+  display: flex;
+  background-color:#61dafb;
+}
+
+.homebutton{
+  height: 90px;
+  width: 300px;
+  padding:  30px 0px 0px 40px;
+}
+
+.identification{
+  height: 90px;
+  flex: 1;
+  text-align: right;
+  padding:  30px 30px 0px 0px;
+}
+
+.buttonlogin{
+  background-color:chocolate;
+  height: 30px;
+  width: 60px;
+  border: 1px solid black;
+  margin: 3px;
+  border-radius: 0.7em;
+}
+
+.buttonlogin:hover {
+  background-color: aquamarine;
+}
