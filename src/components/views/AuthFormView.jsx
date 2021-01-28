@@ -18,7 +18,7 @@ const AuthFormView = props => {
           </h1>
           <FormGroup>
             <Label htmlFor="email"> Email </Label>
-              <Input name="email" type="text" onChange={handleChange}/>
+            <Input name="email" type="text" onChange={handleChange}/>
           </FormGroup>
           <FormGroup>
             <Label htmlFor="password"> Password </Label>
@@ -27,10 +27,20 @@ const AuthFormView = props => {
           <Button className="btn-lg btn-dark btn-block" type="submit">{displayName}</Button>
         </Form>
         {/* /* {isLoggedIn ? `The current logged in user is: ${userEmail}` : ""} */}
-        {error ? 
-        <h2 className="text-center">Sorry, please try again.</h2> :
-        isLoggedIn ? <div></div> : null}
-      </div>
+        {(error && props.typing == false) ? 
+        <div style={{ color: "red" }}>
+          <span>Incorrect email or password. Please try again</span>
+        </div> : null}
+        {name == "signup" ? 
+        <div>
+          <div style={{ color: "white" }}>Already have an account?</div>
+          <div className="click-here" onClick={()=>{ props.history.push("/login")}}>Sign in!</div>
+        </div> :
+        <div>
+          <div style={{ color: "white" }}>Need an account?</div>
+          <div className="click-here" onClick={()=>{ props.history.push("/signup")}}>Sign up today!</div>
+        </div>}
+        </div>
   );
 };
 

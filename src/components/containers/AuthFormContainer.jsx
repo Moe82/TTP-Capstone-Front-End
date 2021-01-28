@@ -10,15 +10,18 @@ class AuthFormContainer extends Component {
     super();
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      typing: false
     }
   }
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
+    this.setState({ typing: true })
   }
 
   handleSubmit = (event) => {
+    this.setState({ typing: false})
     event.preventDefault();
     const formName = event.target.name;
     this.props.loginOrSignup(this.state.email, this.state.password, formName);
@@ -36,6 +39,8 @@ class AuthFormContainer extends Component {
             handleSubmit={this.handleSubmit}
             isLoggedIn={this.props.isLoggedIn}
             userEmail={this.props.userEmail}
+            typing={this.state.typing}
+            history={this.props.history}
           />
         : this.props.history.push("/profile")}
         {console.log("history:" , this.props.history)}
