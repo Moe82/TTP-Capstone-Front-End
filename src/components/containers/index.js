@@ -2,3 +2,4 @@
 export { default as UploadAttendanceContainer } from './UploadAttendanceContainer';
 export {default as StudentInfoContainer} from './StudentInfoContainer';
 export { Login, Signup } from "./AuthFormContainer";
+export {default as NavbarContainer} from './NavbarContainer';
