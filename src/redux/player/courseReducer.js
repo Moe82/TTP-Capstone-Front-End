@@ -1,11 +1,10 @@
-import {
-    CREATE_COURSE,
-    FETCH_COURSES,
-    FETCH_COURSE,
-    DELETE_COURSE,
-    EDIT_COURSE,
-} from './player.types';
 import _ from 'lodash';
+
+const CREATE_COURSE =  'CREATE_COURSE';
+const FETCH_COURSES = "FETCH_COURSES";
+const FETCH_COURSE = "FETCH_COURSE";
+const DELETE_COURSE = "DELETE_COURSE";
+const EDIT_COURSE ="EDIT_COURSE"
 // initialState={courses:[]};
 export default (state = {}, action) => {
     switch (action.type) {

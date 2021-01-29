@@ -1,36 +1,32 @@
 import axios from 'axios';
 import CourseList from '../../components/containers/Courses/CourseList';
-import PlayerActionTypes from './player.types';
-import {
-  CREATE_COURSE,
-  FETCH_COURSES,
-  FETCH_COURSE,
-  DELETE_COURSE,
-  EDIT_COURSE,
-} from './player.types';
 import history from '../../history';
 
-//ACTION CREATORS
-export const fetchAllPlayers = (payload) => ({
-  type: PlayerActionTypes.FETCH_ALL_PLAYERS,
-  payload,
-});
+const CREATE_COURSE =  'CREATE_COURSE';
+const FETCH_COURSES = "FETCH_COURSES";
+const FETCH_COURSE = "FETCH_COURSE";
+const DELETE_COURSE = "DELETE_COURSE";
+const EDIT_COURSE ="EDIT_COURSE"
 
-export const createCourse = (formValues) => {
+
+
+//ACTION CREATORS
+export const createCourse = (formValues, teacherId) => {
   return async (dispatch) => {
-    const response = await axios.post("http://localhost:8190/api/courses", formValues);
+    const response = await axios.post("http://localhost:8190/api/courses", {formValues, teacherId});
     dispatch({ type: CREATE_COURSE, payload: response.data });
   };
 };
 
-export const fetchCourses = () => async dispatch => {
-  const res = await axios.get("http://localhost:8190/api/courses");
+export const fetchCourses = (teacherId) => async dispatch => {
+  console.log("TEACHERID:", teacherId)
+  const res = await axios.get(`http://localhost:8190/api/courses/${teacherId}`);
   dispatch({ type: FETCH_COURSES, payload: res.data });
 }
 
 export const fetchCourse = (id) => async dispatch => {
-  const res = await axios.get(`http://localhost:8190/api/courses/${id}`)
-  dispatch({ type: FETCH_COURSE, payload: res.data });
+  // const res = await axios.get(`http://localhost:8190/api/courses/${id}`)
+  // dispatch({ type: FETCH_COURSE, payload: res.data });
 }
 
 export const editCourse = (id, formValues) => async dispatch => {
@@ -41,21 +37,6 @@ export const editCourse = (id, formValues) => async dispatch => {
 export const deleteCourse = (id) => async dispatch => {
   await axios.delete(`http://localhost:8190/api/courses/delete/${id}`);
   dispatch({ type: DELETE_COURSE, payload: id });
-  history.push('/');
 }
-
-
 //THUNKS
-
-export const fetchAllPlayersThunk = () => {
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.get('https://localhost:8190/api/players');
-      console.log('data', data);
-      dispatch(fetchAllPlayers(data));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-};
 

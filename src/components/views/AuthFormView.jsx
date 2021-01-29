@@ -18,7 +18,7 @@ const AuthFormView = props => {
           </h1>
           <FormGroup>
             <Label htmlFor="email"> Email </Label>
-            <Input name="email" type="text" onChange={handleChange}/>
+            <Input name="email" type="email" onChange={handleChange}/>
           </FormGroup>
           <FormGroup>
             <Label htmlFor="password"> Password </Label>

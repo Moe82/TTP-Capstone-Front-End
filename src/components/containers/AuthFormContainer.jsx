@@ -42,8 +42,7 @@ class AuthFormContainer extends Component {
             typing={this.state.typing}
             history={this.props.history}
           />
-        : this.props.history.push("/")}
-        {console.log("history:" , this.props.history)}
+        : this.props.history.push("/course")}
       </div>
     );
   }

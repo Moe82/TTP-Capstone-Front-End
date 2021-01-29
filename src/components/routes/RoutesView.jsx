@@ -18,15 +18,15 @@ const RoutesView = (props) => {
       <Route exact path="/signup" component={Signup} />
       {isLoggedIn && (
         <Switch>
-        <Route exact path="/" component={CourseList} />
+        <Route exact path="/course" component={CourseList} />
         <Route exact path="/course/delete/:id" component={CourseDelete} />
         <Route exact path="/course/edit/:id" component={CourseEdit} />
         <Route exact path="/course/view" component={CourseView} />
-        <Route path="/courses/:id/upload" component={UploadAttendanceContainer} />
+        <Route exact path="/course/upload" component={UploadAttendanceContainer} />
         </Switch>
       )}
       {/* Displays our Login component as a fallback */}
-      <Route component={Login} />
+      {/* <Route component={Login} /> */}
     </Switch>
   );
 }

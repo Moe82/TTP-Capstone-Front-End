@@ -2,15 +2,18 @@ import axios from "axios";
 
 // ACTION TYPES
 const GET_USER = "GET_USER";
+const GET_USERID = "GET_USERID";
 const REMOVE_USER = "REMOVE_USER";
 
 // ACTION CREATORS
 const getUser = user => { 
+
   return {
     type: GET_USER,
     payload: user
   }
 }
+
 
 const removeUser = () => { 
   return { 
@@ -54,6 +57,8 @@ export const logout = () => async dispatch => {
     console.error(err);
   }
 };
+
+
 
 const defaultState = {
   id: "",
