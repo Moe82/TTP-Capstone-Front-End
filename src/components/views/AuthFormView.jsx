@@ -28,16 +28,18 @@ const AuthFormView = props => {
         </Form>
         {/* /* {isLoggedIn ? `The current logged in user is: ${userEmail}` : ""} */}
         {(error && props.typing == false) ? 
-        <div style={{ color: "red" }}>
-          <span>Incorrect email or password. Please try again</span>
+        <div style={{ color: "red" ,textAlign: 'center' }}>
+          {name == "signup" ? 
+          <span>Email is already regisiterd to a user. Please try again</span> :
+          <span>Incorrect email or password. Please try again</span>}
         </div> : null}
         {name == "signup" ? 
-        <div>
+        <div style={{textAlign: 'center'}}>
           <div style={{ color: "white" }}>Already have an account?</div>
           <div className="click-here" onClick={()=>{ props.history.push("/login")}}>Sign in!</div>
         </div> :
-        <div>
-          <div style={{ color: "white" }}>Need an account?</div>
+        <div style={{ color: "black", textAlign: 'center' }}>
+          <div >Need an account?</div>
           <div className="click-here" onClick={()=>{ props.history.push("/signup")}}>Sign up today!</div>
         </div>}
         </div>

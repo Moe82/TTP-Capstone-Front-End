@@ -11,7 +11,7 @@
 } */
 
 .login-form {
-  color:#66D9EF;
+    color:black;
   width: 100%;
   max-width: 330px;
   padding: 15px;
@@ -21,7 +21,7 @@
 
 .click-here {
   text-decoration: underline;
-  color: #A6E22E;
+  color:#0000FF;
 }
 
 /* 
