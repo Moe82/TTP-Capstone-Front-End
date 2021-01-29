@@ -18,11 +18,15 @@ export const createCourse = (formValues, teacherId) => {
   };
 };
 
-
+export const fetchCourses = (teacherId) => async dispatch => {
+  console.log("TEACHERID:", teacherId)
+  const res = await axios.get(`http://localhost:8190/api/courses/${teacherId}`);
+  dispatch({ type: FETCH_COURSES, payload: res.data });
+}
 
 export const fetchCourse = (id) => async dispatch => {
-  const res = await axios.get(`http://localhost:8190/api/courses/${id}`)
-  dispatch({ type: FETCH_COURSE, payload: res.data });
+  // const res = await axios.get(`http://localhost:8190/api/courses/${id}`)
+  // dispatch({ type: FETCH_COURSE, payload: res.data });
 }
 
 export const editCourse = (id, formValues) => async dispatch => {
