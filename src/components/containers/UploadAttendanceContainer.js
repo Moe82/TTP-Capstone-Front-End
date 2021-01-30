@@ -23,6 +23,7 @@ class UploadAttendanceContainer extends Component {
    }
 
   handleSubmit = (event) => {
+    console.log("ID:::________asd", this.props)
     event.preventDefault()
     const formData = new FormData();
     console.log(typeof this.state.file)
@@ -30,9 +31,9 @@ class UploadAttendanceContainer extends Component {
     console.log("File:", this.state.file);
     console.log("Binary String:", this.state.base64TextString);
     axios.post('http://localhost:8190/api/students/attendance', {
-      imgToBase64: this.state.base64TextString
-    })
-      .then(res => { console.log(res) }).catch((error) => console.error(error));
+      imgToBase64: this.state.base64TextString,
+      id: this.props.match.params.id
+    }).then(res => { console.log(res) }).catch((error) => console.error(error));
   }
 
   render() {
@@ -43,6 +44,5 @@ class UploadAttendanceContainer extends Component {
     )
   }
 }
-
 
 export default UploadAttendanceContainer;

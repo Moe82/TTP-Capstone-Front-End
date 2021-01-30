@@ -36,7 +36,7 @@ class CourseList extends React.Component {
             return (
                 <div className="item" key={course.id}>
                     <div className="right floated content">
-                        <Link to={`/course/upload/`} className="ui button primary">Upload attendance</Link>
+                        <Link to={`/course/upload/${course.id}`} className="ui button primary">Upload attendance</Link>
                         <Link to={`/course/edit/${course.id}`} className="ui button primary" courseId={course.id}>Edit</Link>
                         <Link onClick={()=> { this.props.history.push(`/course/delete/${course.id}`)} } className="ui button negative">Delete</Link>
                     </div>

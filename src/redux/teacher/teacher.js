@@ -7,7 +7,7 @@ const REMOVE_USER = "REMOVE_USER";
 
 // ACTION CREATORS
 const getUser = user => { 
-
+  user.isLoggedIn = true;
   return {
     type: GET_USER,
     payload: user

@@ -12,8 +12,11 @@ const RoutesView = (props) => {
   const { isLoggedIn } = props;
   
   return (
+   
     <Switch>
+       {console.log("*************",props)}
       {/* Routes placed within this section are available to all visitors */}
+      <Route exact path="/" component={Login} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
       {isLoggedIn && (
@@ -22,7 +25,7 @@ const RoutesView = (props) => {
         <Route exact path="/course/delete/:id" component={CourseDelete} />
         <Route exact path="/course/edit/:id" component={CourseEdit} />
         <Route exact path="/course/view" component={CourseView} />
-        <Route exact path="/course/upload" component={UploadAttendanceContainer} />
+        <Route exact path="/course/upload/:id" component={UploadAttendanceContainer} />
         </Switch>
       )}
       {/* Displays our Login component as a fallback */}

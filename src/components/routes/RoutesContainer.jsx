@@ -21,7 +21,7 @@ class RoutesContainer extends Component {
 
 const mapState = (state) => {
   return {
-    isLoggedIn: !!state.teacher.id,
+    isLoggedIn: state.teacher.isLoggedIn,
     userId: state.teacher.email
   }
 }

@@ -4,16 +4,32 @@ import axios from 'axios';
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
-// Individual reducers altogether under an alias;
 import rootReducer from './root-reducer';
+
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+
+
+
+
+
+
 
 // Construct our Redux store;
 const logger = createLogger({ collapsed: true });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware.withExtraArgument({ axios }), logger)
 );
-const store = createStore(rootReducer, middleware);
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 // Export our store by default, which will be provided to and injected within our entire application;
-export default store;
+
+let store = createStore(persistedReducer, middleware)
+let persistor = persistStore(store)
+export { store, persistor }
