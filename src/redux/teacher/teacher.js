@@ -7,7 +7,10 @@ const REMOVE_USER = "REMOVE_USER";
 
 // ACTION CREATORS
 const getUser = user => { 
-  user.isLoggedIn = true;
+  if (user.email !== undefined) {
+    user.isLoggedIn = true
+  }
+  
   return {
     type: GET_USER,
     payload: user
@@ -63,7 +66,8 @@ export const logout = () => async dispatch => {
 const defaultState = {
   id: "",
   email:"",
-  error: "",      
+  error: "",
+  isLoggedIn: false     
 }
 
 // REDUCER

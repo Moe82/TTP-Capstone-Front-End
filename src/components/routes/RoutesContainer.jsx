@@ -8,7 +8,7 @@ import { NavbarContainer } from '../containers'
 
 class RoutesContainer extends Component {
   componentDidMount() {
-    this.props.loadInitialData();
+    this.props.loadInitialData(this.props.isLoggedIn);
   }
   render() {
     return (
