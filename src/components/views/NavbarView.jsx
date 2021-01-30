@@ -5,6 +5,7 @@ import './styles/NavbarView.css'
 
 export default function NavbarView(props) {
   console.log("NavBarView", props)
+ 
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -22,12 +23,12 @@ export default function NavbarView(props) {
               <Nav.Link>Courses</Nav.Link>
               <Nav.Link>Settings</Nav.Link>
             </Nav>
-        }
+        } 
         {
           !props.isLoggedIn ?
           <Nav.Link>Log in</Nav.Link> :
           <Nav>
-            <Nav.Link>Log out</Nav.Link>
+            <Nav.Link onClick={()=>props.signout()}>Log out</Nav.Link>
           </Nav>
         }
         </Navbar.Collapse>
