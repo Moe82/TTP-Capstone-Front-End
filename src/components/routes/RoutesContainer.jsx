@@ -9,7 +9,7 @@ import { NavbarContainer } from '../containers'
 
 class RoutesContainer extends Component {
   componentDidMount() {
-    (this.props.isLoggedIn == true ? console.log("Logged in") : this.props.);
+    (this.props.isLoggedIn == true ? console.log("Logged in") : this.props.loadInitialData(this.props.isLoggedIn));
   }
   render() {
     return (
