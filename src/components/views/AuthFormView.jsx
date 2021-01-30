@@ -35,7 +35,7 @@ const AuthFormView = props => {
         </div> : null}
         {name == "signup" ? 
         <div style={{textAlign: 'center'}}>
-          <div style={{ color: "white" }}>Already have an account?</div>
+          <div style={{ color: "black" }}>Already have an account?</div>
           <div className="click-here" onClick={()=>{ props.history.push("/login")}}>Sign in!</div>
         </div> :
         <div style={{ color: "black", textAlign: 'center' }}>

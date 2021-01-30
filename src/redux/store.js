@@ -8,18 +8,11 @@ import rootReducer from './root-reducer';
 
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
 const persistConfig = {
   key: 'root',
   storage,
 }
-
-
-
-
-
-
-
-
 // Construct our Redux store;
 const logger = createLogger({ collapsed: true });
 const middleware = composeWithDevTools(
