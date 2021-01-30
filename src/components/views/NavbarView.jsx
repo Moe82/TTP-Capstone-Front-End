@@ -28,7 +28,10 @@ export default function NavbarView(props) {
           !props.isLoggedIn ?
           <Nav.Link>Log in</Nav.Link> :
           <Nav>
-            <Nav.Link onClick={()=>props.signout()}>Log out</Nav.Link>
+            <Nav.Link onClick={()=> {
+              props.purgeCourses()
+              props.signout()
+            }}>Log out</Nav.Link>
           </Nav>
         }
         </Navbar.Collapse>

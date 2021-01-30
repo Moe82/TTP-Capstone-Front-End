@@ -1,9 +1,9 @@
 import axios from "axios";
-
+import { PURGE } from 'redux-persist';
 // ACTION TYPES
 const GET_USER = "GET_USER";
 const GET_USERID = "GET_USERID";
-const REMOVE_USER = "REMOVE_USER";
+
 
 // ACTION CREATORS
 const getUser = user => { 
@@ -20,7 +20,9 @@ const getUser = user => {
 
 const removeUser = () => { 
   return { 
-    type: REMOVE_USER 
+    type: PURGE,
+    key: "root",    // Whatever you chose for the "key" value when initialising redux-persist in the **persistCombineReducers** method - e.g. "root"
+    result: () => null
   }
 }
 
@@ -53,7 +55,7 @@ export const auth = (email, password, method) => async dispatch => {
 
 export const logout = () => async dispatch => {
   try {
-    await axios.delete("http://localhost:8190/auth/logout", { withCredentials: true });
+    // await axios.delete("http://localhost:8190/auth/logout", { withCredentials: true });
     dispatch(removeUser());
   }
   catch (err) {
@@ -75,7 +77,8 @@ const teacherReducer = (state = defaultState , action) => {
   switch (action.type) {
     case GET_USER:
       return action.payload;
-    case REMOVE_USER:
+    case PURGE:
+      console.log("********PURGING STATE!*********")
       return {};
     default:
       return state;
