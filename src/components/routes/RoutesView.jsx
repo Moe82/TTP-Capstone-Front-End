@@ -7,6 +7,7 @@ import CourseList from '../containers/Courses/CourseList';
 import CourseDelete from '../containers/Courses/CourseDelete'
 import CourseEdit from '../containers/Courses/CourseEdit'
 import CourseView from '../containers/Courses/CourseView'
+//import DatePickerContainer from '../containers/DatepickerContainer'
 
 const RoutesView = (props) => {
   const { isLoggedIn } = props;
@@ -23,7 +24,7 @@ const RoutesView = (props) => {
           <Route exact path="/course/delete/:id" component={CourseDelete} />
           <Route exact path="/course/edit/:id" component={CourseEdit} />
           <Route exact path="/course/view" component={CourseView} />
-          <Route exact path="/course/upload" component={UploadAttendanceContainer} />
+          <Route exact path="/course/upload/:id" component={UploadAttendanceContainer} />
           <Route exact path="/course/:id/students" component={StudentList} />
         </Switch>
       )}

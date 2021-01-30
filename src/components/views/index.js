@@ -3,6 +3,7 @@ export { default as UploadAttendanceView } from './UploadAttendanceView'
 export { default as StudentInfoView } from './StudentInfoView'
 export { default as AuthFormView } from "./AuthFormView";
 export { default as NavbarView } from "./NavbarView"
+export { default as DatepickerView } from "./DatepickerView"
 
 
 
