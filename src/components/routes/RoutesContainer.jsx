@@ -9,7 +9,7 @@ import { NavbarContainer } from '../containers'
 
 class RoutesContainer extends Component {
   componentDidMount() {
-    this.props.loadInitialData(this.props.isLoggedIn);
+    (this.props.isLoggedIn == true ? console.log("Logged in") : this.props.loadInitialData(this.props.isLoggedIn));
   }
   render() {
     return (
@@ -22,7 +22,7 @@ class RoutesContainer extends Component {
 
 const mapState = (state) => {
   return {
-    isLoggedIn: state.teacher.isLoggedIn,
+    isLoggedIn: !!state.teacher.isLoggedIn,
     userId: state.teacher.email
   }
 }
