@@ -1,17 +1,9 @@
 import axios from "axios";
-<<<<<<< HEAD
-import { PURGE, REHYDRATE } from 'redux-persist';
-
-// ACTION TYPES
-const GET_USER = "GET_USER";
-const GET_USERID = "GET_USERID";
-=======
 import { PURGE } from 'redux-persist';
 // ACTION TYPES
 const GET_USER = "GET_USER";
 const GET_USERID = "GET_USERID";
 
->>>>>>> logout
 
 // ACTION CREATORS
 const getUser = user => { 
@@ -28,13 +20,9 @@ const getUser = user => {
 
 const removeUser = () => { 
   return { 
-<<<<<<< HEAD
-    type: PURGE
-=======
     type: PURGE,
     key: "root",    // Whatever you chose for the "key" value when initialising redux-persist in the **persistCombineReducers** method - e.g. "root"
     result: () => null
->>>>>>> logout
   }
 }
 
@@ -90,11 +78,7 @@ const teacherReducer = (state = defaultState , action) => {
     case GET_USER:
       return action.payload;
     case PURGE:
-<<<<<<< HEAD
-      console.log("PURGEING STATE")
-=======
       console.log("********PURGING STATE!*********")
->>>>>>> logout
       return {};
     default:
       return state;
