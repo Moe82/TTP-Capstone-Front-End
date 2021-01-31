@@ -24,7 +24,7 @@ const AuthFormView = props => {
             <Label htmlFor="password"> Password </Label>
               <Input name="password" type="password" onChange={handleChange}/>
           </FormGroup>
-          <Button className="btn-lg btn-dark btn-block" type="submit">{displayName}</Button>
+          <Button style={{backgroundColor:'#AE81FF', color:'black'}} className="btn-lg btn-dark btn-block" type="submit">{displayName}</Button>
         </Form>
         {/* /* {isLoggedIn ? `The current logged in user is: ${userEmail}` : ""} */}
         {(error && props.typing == false) ? 
