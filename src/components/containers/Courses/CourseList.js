@@ -24,7 +24,7 @@ class CourseList extends React.Component {
     return (
       <div className="field">
         <label>{label}</label>
-        <input {...input} />
+        <input style={{width:'25%', borderColor:'#AE81FF'}} {...input} />
         <div>{this.renderError(meta)}</div>
       </div>
     )
@@ -58,9 +58,10 @@ class CourseList extends React.Component {
       <div>
         User: {this.props.email} <br /><br />
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-          <Field name="name" component={this.renderInput} label="Add a course:" />
-          <button className="ui button primary">Submit</button>
+          <Field name="name" component={this.renderInput} label="Add a course:"/>
+          <button style={{backgroundColor:'#AE81FF'}}  className="ui button primary">Add Corurse</button>
         </form>
+        <br/><br/>
         <h1>Courses:</h1>
         <div className="ui celled list">
           {
