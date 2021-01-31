@@ -3,10 +3,6 @@ import axios from "axios";
 import { UploadAttendanceView } from '../views'
 import BACK_END from '../../back-end-url'
 
-
-
-
-
 class UploadAttendanceContainer extends Component {
   constructor(props) {
     super(props)
@@ -17,10 +13,12 @@ class UploadAttendanceContainer extends Component {
       success: false
     }
   }
+
   _handleReaderLoaded = (readerEvt)=>{
     let binaryStr = readerEvt.target.result;
     this.setState({base64TextString:btoa(binaryStr)})
   }
+  
   handleChange = (event) => { 
     let file = event.target.files[0]
     if(file){

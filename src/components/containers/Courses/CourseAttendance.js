@@ -1,5 +1,5 @@
 import React from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import BACK_END from '../../../back-end-url'
 
 class CourseAttendance extends React.Component {
@@ -8,8 +8,14 @@ class CourseAttendance extends React.Component {
         this.state = {data:{}};
     }
     componentDidMount() {
-        console.log(this.props.match.params.id);
-        Axios.get(`${BACK_END}api/students/attendance`,{courseId:this.props.match.params.id});
+      axios.get(`${BACK_END}/api/students/attendance/${this.props.match.params.id}`)
+        .then(response => {
+          console.log("DATA:", response)
+          this.setState({
+            data: response.data.data
+          })
+        })
+        
     }
     renderDates() {
         const dates = [];
