@@ -43,8 +43,8 @@ class CourseList extends React.Component {
             <Link onClick={() => { this.props.history.push(`/course/delete/${course.id}`) }} className="ui button negative">Delete</Link>
           </div>
           <div className="content" style={{ fontSize: '1.5rem' }}>
-            {course.name} -
-            <Link to = {`/course/${course.id}/attendance`}style ={{marginLeft:'0.5rem'}}className = "ui button primary">Attendance</Link>
+            {course.name} 
+            <Link to = {`/course/${course.id}/attendance`}style ={{marginLeft:'3rem'}}className = "ui button primary">Attendance</Link>
           </div>
         </div>
 
