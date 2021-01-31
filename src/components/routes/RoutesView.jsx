@@ -7,7 +7,7 @@ import CourseList from '../containers/Courses/CourseList';
 import CourseDelete from '../containers/Courses/CourseDelete'
 import CourseEdit from '../containers/Courses/CourseEdit'
 import CourseView from '../containers/Courses/CourseView'
-
+import CourseAttendance from '../containers/Courses/CourseAttendance';
 const RoutesView = (props) => {
   const { isLoggedIn } = props;
 
@@ -25,10 +25,12 @@ const RoutesView = (props) => {
           <Route exact path="/course/view" component={CourseView} />
           <Route exact path="/course/upload" component={UploadAttendanceContainer} />
           <Route exact path="/course/:id/students" component={StudentList} />
+          <Route exact path="/course/:id/attendance" component={CourseAttendance} />
         </Switch>
       )}
       {/* Displays our Login component as a fallback */}
       <Route component={Login} />
+
     </Switch>
   );
 }
