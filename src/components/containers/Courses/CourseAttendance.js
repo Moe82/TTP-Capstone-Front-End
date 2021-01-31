@@ -1,24 +1,13 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import StudentList from '../Students/StudentList';
+import Axios from 'axios';
 class CourseAttendance extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data: {
-                "Mohamed Shafee": {
-                    "11/5": "Present",
-                    "11/6": "absent",
-                    "11/7": "absent"
-                },
-                "Justin": {
-                    "11/5": "present",
-                    "11/6": "present",
-                    "11/7": "absent"
-                }
-
-            }
-        }
+        this.state = {data:{}};
+    }
+    componentDidMount() {
+        console.log(this.props.match.params.id);
+        Axios.get("http://localhost8190/api/students/attendance",{courseId:this.props.match.params.id});
     }
     renderDates() {
         const dates = [];
@@ -45,24 +34,24 @@ class CourseAttendance extends React.Component {
             return (
                 <tr>
                     <td>{student}</td>
-                    {this.renderAttendance()}
+                    {this.renderAttendance(student)}
                 </tr>
             )
         })
     }
-    renderAttendance() {
+    renderAttendance(student) {
         const attendances = [];
-        for (let name of Object.keys(this.state.data)) {
-            for (const [key, value] of Object.entries(this.state.data[name])) {
-                attendances.push(value);
-            }
-            console.log(attendances);
+
+        for (const [key, value] of Object.entries(this.state.data[student])) {
+            attendances.push(value);
+        }
+        console.log(attendances);
         return attendances.map(attendance => {
             return (
                 <td>{attendance}</td>
             )
         })
-        }
+
     }
     render() {
         return (
