@@ -4,7 +4,8 @@ import RoutesView from "./RoutesView";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout, me } from "../../redux/teacher";
-import { purge } from "../../redux/player/player.actions";
+import { purge } from "../../redux/player/courseReducer";
+import { purgeStudents } from "../../redux/player/studentReducer";
 import { NavbarContainer } from '../containers'
 
 class RoutesContainer extends Component {
@@ -14,7 +15,11 @@ class RoutesContainer extends Component {
   render() {
     return (
     <div>
-      <NavbarContainer isLoggedIn={this.props.isLoggedIn} signout={this.props.signout} purgeCourses={this.props.purgeCourses}/> 
+      <NavbarContainer 
+      isLoggedIn={this.props.isLoggedIn} 
+      signout={this.props.signout} 
+      purgeCourses={this.props.purgeCourses}
+      purgeStudents={this.props.purgeStudents}/> 
       <RoutesView isLoggedIn={this.props.isLoggedIn} userId={this.props.userId} /> 
     </div>)
   }
@@ -31,7 +36,8 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData: () => dispatch(me()),
     signout: () => dispatch(logout()),
-    purgeCourses: () => dispatch(purge())
+    purgeCourses: () => dispatch(purge()),
+    purgeStudents: () => dispatch(purgeStudents())
   }
 }
 

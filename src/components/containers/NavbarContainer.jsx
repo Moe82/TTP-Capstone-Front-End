@@ -9,7 +9,8 @@ export default class NavbarContainer extends Component {
         isLoggedIn={this.props.isLoggedIn} 
         userId={this.props.userId} 
         signout={this.props.signout}
-        purgeCourses={this.props.purgeCourses}/>
+        purgeCourses={this.props.purgeCourses}
+        purgeStudents={this.props.purgeStudents}/>
       </div>
     )
   }

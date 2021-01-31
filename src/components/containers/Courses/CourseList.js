@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { createCourse, fetchCourses, deleteCourse } from '../../../redux/player/player.actions';
+import { createCourse, fetchCourses, deleteCourse } from '../../../redux/player/courseReducer';
 
 class CourseList extends React.Component {
   componentDidMount = () => {
@@ -53,11 +53,13 @@ class CourseList extends React.Component {
   render() {
     return (
       <div>
+        User: {this.props.email} <br /><br />
+        {console.log("sdfsdfsdf",this.props.courses)}
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-          <Field name="name" component={this.renderInput} label="Enter Course name" />
+          <Field name="name" component={this.renderInput} label="Add a course:" />
           <button className="ui button primary">Submit</button>
         </form>
-        <h1>Course name</h1>
+        <h1>Courses:</h1>
         <div className="ui celled list">{this.renderList()}</div>
       </div>
 
@@ -83,7 +85,8 @@ const formWrapped = reduxForm({
 const mapStateToProps = (state) => {
   return {
     courses: Object.values(state.courses),
-    teacherId: state.teacher.id
+    teacherId: state.teacher.id,
+    email: state.teacher.email
   }
 }
 

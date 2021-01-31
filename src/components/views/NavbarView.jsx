@@ -30,6 +30,7 @@ export default function NavbarView(props) {
           <Nav>
             <Nav.Link onClick={()=> {
               props.purgeCourses()
+              props.purgeStudents()
               props.signout()
             }}>Log out</Nav.Link>
           </Nav>

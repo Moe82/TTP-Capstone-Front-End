@@ -2,7 +2,7 @@ import { forEachRight } from 'lodash';
 import React from 'react';
 import ModalView from "../../views/ModelView";
 import history from '../../../history'
-import { fetchCourse, deleteCourse } from '../../../redux/player/player.actions';
+import { fetchCourse, deleteCourse } from '../../../redux/player/courseReducer';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
