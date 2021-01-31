@@ -12,7 +12,9 @@ class UploadAttendanceContainer extends Component {
     super(props)
     this.state = {
       file: null,
-      selectDate: new Date()
+      selectDate: new Date(),
+      error: false,
+      success: false
     }
   }
   _handleReaderLoaded = (readerEvt)=>{
@@ -30,10 +32,12 @@ class UploadAttendanceContainer extends Component {
    }
 
   handleSubmit = (event) => {
-    console.log("ID:::________asd", this.props)
+    if (this.state.file.name == null) {
+      (this.setState({error: true}))
+      return
+    }
     event.preventDefault()
     const formData = new FormData();
-    console.log(typeof this.state.file)
     formData.append(this.state.file.name, this.state.file);
     console.log("File:", this.state.file);
     console.log("Binary String:", this.state.base64TextString);
@@ -41,11 +45,11 @@ class UploadAttendanceContainer extends Component {
       imgToBase64: this.state.base64TextString,
       id: this.props.match.params.id,
       date: this.state.selectDate.toDateString()
-    }).then(res => { console.log(res) }).catch((error) => console.error(error));
-  }
+    }).then(res => { console.log(this.state.selectDate); this.setState({success:true})}).catch((error) => console.error(error));
+    }
+    
    
   handleDate = (date) =>{
-    
     this.setState({
       selectDate: date
     })
@@ -53,11 +57,17 @@ class UploadAttendanceContainer extends Component {
 
   render() {
     return (
+      
       <div>
-        
-        {console.log("This is the date that we wanted ",this.state.selectDate.toDateString())}
+        {console.log(this.state.success)}
         <UploadAttendanceView handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleDate={this.handleDate}/>
-        
+        <br /><br/><br />
+        {this.state.success &&
+          <div >
+            Attendance sheet has been uploaded! <br />
+            Please check the date to make sure it's correct and reupload the file if you need to change it. 
+          </div>
+        } 
       </div>
     )
   }
