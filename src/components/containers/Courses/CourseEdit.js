@@ -36,9 +36,10 @@ class CourseEdit extends React.Component {
         }
         return (
             <div>
-                <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form">
+                <form  onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form">
                     <Field name="name" component={this.renderInput} label="Edit the Course name" />
-                    <button className="ui button primary">Edit</button>
+                    <input type="submit"   onDoubleClick={()=>this.props.history.push("/course") } className="ui button primary" />
+                   
                 </form>
             </div>
         )

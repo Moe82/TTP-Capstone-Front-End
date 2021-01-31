@@ -4,10 +4,11 @@ import ModalView from "../../views/ModelView";
 import history from '../../../history'
 import { fetchCourse, deleteCourse } from '../../../redux/player/player.actions';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 
 class CourseDelete extends React.Component {
+    //onClick={() => this.props.history.push("/courses")}  
     
     renderActions() {
         return (
@@ -16,7 +17,7 @@ class CourseDelete extends React.Component {
                   this.props.deleteCourse(this.props.match.params.id)
                   this.props.history.push("/course")
                 }} className="ui button negative">Delete</button>
-                <Link onClick={() => this.props.history.push("/courses")}  className="ui button">Cancel</Link>
+                <Link onClick={() => this.props.history.push("/course")} className="ui button">Cancel</Link>
             </React.Fragment>
         )
     }
