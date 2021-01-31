@@ -1,27 +1,26 @@
 import axios from "axios";
 import { PURGE } from 'redux-persist';
+import BACK_END from '../../back-end-url'
+
 // ACTION TYPES
 const GET_USER = "GET_USER";
 const GET_USERID = "GET_USERID";
-
 
 // ACTION CREATORS
 const getUser = user => { 
   if (user.email !== undefined) {
     user.isLoggedIn = true
   }
-  
   return {
     type: GET_USER,
     payload: user
   }
 }
 
-
 const removeUser = () => { 
   return { 
     type: PURGE,
-    key: "root",    // Whatever you chose for the "key" value when initialising redux-persist in the **persistCombineReducers** method - e.g. "root"
+    key: "root",    
     result: () => null
   }
 }
@@ -29,7 +28,7 @@ const removeUser = () => {
 // THUNK CREATORS
 export const me = () => async dispatch => {
   try {
-    const res = await axios.get("http://localhost:8190/auth/me", { withCredentials: true });
+    const res = await axios.get(`${BACK_END}/auth/me`, { withCredentials: true });
     dispatch(getUser(res.data || {}));
   }
   catch (err) {
@@ -40,7 +39,7 @@ export const me = () => async dispatch => {
 export const auth = (email, password, method) => async dispatch => {
   let res;
   try {
-    res = await axios.post(`http://localhost:8190/auth/${method}`, { email, password }, { withCredentials: true });
+    res = await axios.post(`${BACK_END}/auth/${method}`, { email, password }, { withCredentials: true });
   }
   catch (authError) {
     return dispatch(getUser({ error: authError }));
@@ -63,8 +62,7 @@ export const logout = () => async dispatch => {
   }
 };
 
-
-
+// initial state 
 const defaultState = {
   id: "",
   email:"",
@@ -72,7 +70,7 @@ const defaultState = {
   isLoggedIn: false     
 }
 
-// REDUCER
+// reducer
 const teacherReducer = (state = defaultState , action) => {
   switch (action.type) {
     case GET_USER:

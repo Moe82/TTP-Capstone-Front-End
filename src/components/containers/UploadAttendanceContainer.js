@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { UploadAttendanceView } from '../views'
-
+import BACK_END from '../../back-end-url'
 
 
 
@@ -41,7 +41,7 @@ class UploadAttendanceContainer extends Component {
     formData.append(this.state.file.name, this.state.file);
     console.log("File:", this.state.file);
     console.log("Binary String:", this.state.base64TextString);
-    axios.post('http://localhost:8190/api/students/attendance', {
+    axios.post(`${BACK_END}/api/students/attendance`, {
       imgToBase64: this.state.base64TextString,
       id: this.props.match.params.id,
       date: this.state.selectDate.toDateString()

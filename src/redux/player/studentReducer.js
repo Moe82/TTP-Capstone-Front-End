@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import Axios from 'axios';
 import { PURGE } from 'redux-persist'
+import BACK_END from '../../back-end-url'
 
 // action types 
 const CREATE_STUDENT = 'CREATE_STUDENT';
@@ -8,12 +9,12 @@ const FETCH_STUDENTS = 'FETCH_STUDENTS';
 
 // middleware
 export const createStudent = (formValues, courseId) => async (dispatch) => {
-    const res = await Axios.post(`http://localhost:8190/api/students`, { formValues, courseId });
+    const res = await Axios.post(`${BACK_END}/api/students`, { formValues, courseId });
     dispatch({ type: CREATE_STUDENT, payload: res.data })
 }
 
 export const fetchStudents = (courseId) => async (dispatch) => {
-    const res = await Axios.get(`http://localhost:8190/api/students/${courseId}`);
+    const res = await Axios.get(`${BACK_END}/api/students/${courseId}`);
     dispatch({type:FETCH_STUDENTS,payload:res.data});
 }
 
