@@ -6,6 +6,7 @@ import { createCourse, fetchCourses, deleteCourse } from '../../../redux/player/
 
 class CourseList extends React.Component {
   componentDidMount = () => {
+    console.log(this.props);
     this.props.fetchCourses(this.props.teacherId)
   }
   renderError = ({ error, touched }) => {
@@ -37,12 +38,13 @@ class CourseList extends React.Component {
         <div className="item" key={course.id}>
           <div className="right floated content">
             <Link className="ui button teal" to={`/course/${course.id}/students`}>Students</Link>
-            <Link to={`/course/upload/${course.id}`} className="ui button primary">Upload attendance</Link>
+            <Link to={`/course/upload/${course.id}`} className="ui button yellow">Upload attendance</Link>
             <Link to={`/course/edit/${course.id}`} className="ui button green" courseId={course.id}>Edit</Link>
             <Link onClick={() => { this.props.history.push(`/course/delete/${course.id}`) }} className="ui button negative">Delete</Link>
           </div>
-          <div className="content" style={{ fontSize: '2rem' }}>
-            {course.name}
+          <div className="content" style={{ fontSize: '1.5rem' }}>
+            {course.name} -
+            <Link to = {`/course/${course.id}/attendance`}style ={{marginLeft:'0.5rem'}}className = "ui button primary">Attendance</Link>
           </div>
         </div>
 

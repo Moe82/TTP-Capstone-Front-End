@@ -16,7 +16,7 @@ class CourseDelete extends React.Component {
                   this.props.deleteCourse(this.props.match.params.id)
                   this.props.history.push("/course")
                 }} className="ui button negative">Delete</button>
-                <Link onClick={() => this.props.history.push("/courses")}  className="ui button">Cancel</Link>
+                <Link onClick={() => this.props.history.push("/course")}  className="ui button">Cancel</Link>
             </React.Fragment>
         )
     }
