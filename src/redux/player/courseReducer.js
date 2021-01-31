@@ -34,7 +34,7 @@ export const editCourse = (id, formValues) => async dispatch => {
   dispatch({ type: EDIT_COURSE, payload: res.data })
 }
 export const deleteCourse = (id) => async dispatch => {
-  await axios.delete(`${BACK_END}/courses/delete/${id}`);
+  await axios.delete(`${BACK_END}/api/courses/delete/${id}`);
   dispatch({ type: DELETE_COURSE, payload: id });
 }
 
@@ -61,7 +61,8 @@ export default (state = {}, action) => {
       case EDIT_COURSE:
         return { ...state, [action.payload.id]: action.payload };
       case DELETE_COURSE:
-        return _.omit(state, action.payload);      
+        let newState = _.omit(state, action.payload);  
+        return newState
       default:
         return state; 
     }

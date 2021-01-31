@@ -6,8 +6,10 @@ import { createCourse, fetchCourses, deleteCourse } from '../../../redux/player/
 
 class CourseList extends React.Component {
   componentDidMount = () => {
-    console.log(this.props);
-    this.props.fetchCourses(this.props.teacherId)
+    // not good logic, but it fixes the delete button issue for now. 
+    if (this.props.courses.length == 0) {
+      this.props.fetchCourses(this.props.teacherId)
+    }
   }
   renderError = ({ error, touched }) => {
     if (touched && error) {
@@ -32,7 +34,6 @@ class CourseList extends React.Component {
   }
 
   renderList() {
-    { this.props.fetchCourses(this.props.teacherId) }
     return this.props.courses.map(course => {
       return (
         <div className="item" key={course.id}>
@@ -44,7 +45,7 @@ class CourseList extends React.Component {
           </div>
           <div className="content" style={{ fontSize: '1.5rem' }}>
             {course.name} 
-            <Link to = {`/course/${course.id}/attendance`}style ={{marginLeft:'3rem'}}className = "ui button primary">Attendance</Link>
+            <Link to = {`/course/${course.id}/attendance`}style ={{marginLeft:'3qrem'}}className = "ui button primary">Attendance</Link>
           </div>
         </div>
 
@@ -56,13 +57,30 @@ class CourseList extends React.Component {
     return (
       <div>
         User: {this.props.email} <br /><br />
-        {console.log("sdfsdfsdf",this.props.courses)}
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
           <Field name="name" component={this.renderInput} label="Add a course:" />
           <button className="ui button primary">Submit</button>
         </form>
         <h1>Courses:</h1>
-        <div className="ui celled list">{this.renderList()}</div>
+        <div className="ui celled list">
+          {
+            this.props.courses.map(course => {
+              return (
+              <div className="item" key={course.id}>
+                <div className="right floated content">
+                  <Link className="ui button teal" to={`/course/${course.id}/students`}>Students</Link>
+                  <Link to={`/course/upload/${course.id}`} className="ui button yellow">Upload attendance</Link>
+                  <Link to={`/course/edit/${course.id}`} className="ui button green" courseId={course.id}>Edit</Link>
+                  <Link onClick={() => { this.props.history.push(`/course/delete/${course.id}`) }} className="ui button negative">Delete</Link>
+                </div>
+                <div className="content" style={{ fontSize: '1.5rem' }}>
+                  {course.name} 
+                  <Link to = {`/course/${course.id}/attendance`}style ={{marginLeft:'3qrem'}}className = "ui button primary">Attendance</Link>
+                </div>
+              </div>)
+            })
+          }
+        </div>
       </div>
 
     );

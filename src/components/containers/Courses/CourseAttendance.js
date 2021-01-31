@@ -1,5 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
+import BACK_END from '../../../back-end-url'
+
 class CourseAttendance extends React.Component {
     constructor(props) {
         super(props);
@@ -7,7 +9,7 @@ class CourseAttendance extends React.Component {
     }
     componentDidMount() {
         console.log(this.props.match.params.id);
-        Axios.get("http://localhost8190/api/students/attendance",{courseId:this.props.match.params.id});
+        Axios.get(`${BACK_END}api/students/attendance`,{courseId:this.props.match.params.id});
     }
     renderDates() {
         const dates = [];
