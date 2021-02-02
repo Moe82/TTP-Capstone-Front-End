@@ -52,11 +52,11 @@ class CourseList extends React.Component {
                   return (
                   <div className="item" key={course.id}>
                     <div className="right floated content">
-                      <Link className="ui button teal" to={`/course/${course.id}/students`}>Students</Link>
+                    <Link to={`/course/edit/${course.id}`} className="ui button green" courseId={course.id}>Edit name</Link>
+                    <Link onClick={() => { this.props.history.push(`/course/delete/${course.id}`) }} className="ui button negative">Delete</Link>
+                      <Link className="ui button teal" to={`/course/${course.id}/students`}>Add Students</Link>
                       <Link to={`/course/upload/${course.id}`} className="ui button yellow">Upload attendance</Link>
-                      <Link to={`/course/edit/${course.id}`} className="ui button green" courseId={course.id}>Edit</Link>
-                      <Link onClick={() => { this.props.history.push(`/course/delete/${course.id}`) }} className="ui button negative">Delete</Link>
-                      <Link to = {`/course/${course.id}/attendance`}className = "ui button primary">Attendance</Link>
+                      <Link to = {`/course/${course.id}/attendance`}className = "ui button primary">View Attendance</Link>
                     </div>
                     <div className="content" style={{ fontSize: '1.5rem' }}>
                       {course.name} 
@@ -67,9 +67,7 @@ class CourseList extends React.Component {
             </div>
             </div>
         }
-        
       </div>
-
     );
   }
 }
