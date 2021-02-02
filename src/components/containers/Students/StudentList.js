@@ -1,9 +1,15 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { createStudent, fetchStudents } from '../../../redux/player/StudentAction';
+import { purgeStudents, fetchStudents, createStudent } from '../../../redux/student/studentReducer';
+
 class StudentList extends React.Component {
-    
+  
+  componentDidMount = () => {
+    this.props.purgeStudents()
+    this.props.fetchStudents(this.props.match.params.id)
+  }
+  
   renderInput = ({ input, label, meta }) => {
     return (
       <div className="ui field">
@@ -73,4 +79,4 @@ const formWrapped = reduxForm({
     validate
 })(StudentList)
 
-export default connect(mapStateToProps, { createStudent, fetchStudents })(formWrapped)
+export default connect(mapStateToProps, { createStudent, fetchStudents, purgeStudents })(formWrapped)

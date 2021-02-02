@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { createCourse, fetchCourses, deleteCourse } from '../../../redux/player/courseReducer';
+import { createCourse, fetchCourses, deleteCourse } from '../../../redux/student/courseReducer';
 
 class CourseList extends React.Component {
   componentDidMount = () => {

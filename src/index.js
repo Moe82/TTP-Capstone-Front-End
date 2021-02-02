@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App/App';
 import './index.css';
-import history from './history';
+import CreateHistory from  "history/createBrowserHistory";
 //Redux
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
@@ -13,7 +13,7 @@ import { Router } from 'react-router-dom';
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <Router history = {history}>
+      <Router history = {CreateHistory()}>
         <App />
       </Router>
       </PersistGate>

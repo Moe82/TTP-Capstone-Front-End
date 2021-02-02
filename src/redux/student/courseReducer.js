@@ -2,7 +2,6 @@ import _ from 'lodash';
 import { PURGE } from 'redux-persist'
 import axios from 'axios';
 import CourseList from '../../components/containers/Courses/CourseList';
-import history from '../../history';
 import BACK_END from '../../back-end-url'
 
 // Action types
@@ -12,8 +11,6 @@ const FETCH_COURSE = "FETCH_COURSE";
 const DELETE_COURSE = "DELETE_COURSE";
 const EDIT_COURSE ="EDIT_COURSE"
 
-
-
 //ACTION CREATORS
 export const createCourse = (formValues, teacherId) => {
   return async (dispatch) => {
@@ -21,18 +18,22 @@ export const createCourse = (formValues, teacherId) => {
     dispatch({ type: CREATE_COURSE, payload: response.data });
   };
 };
+
 export const fetchCourses = (teacherId) => async dispatch => {
   const res = await axios.get(`${BACK_END}/api/courses/${teacherId}`);
   dispatch({ type: FETCH_COURSES, payload: res.data });
 }
+
 export const fetchCourse = (id) => async dispatch => {
   // const res = await axios.get(`http://localhost:8190/api/courses/${id}`)
   // dispatch({ type: FETCH_COURSE, payload: res.data });
 }
+
 export const editCourse = (id, formValues) => async dispatch => {
   const res = await axios.put(`${BACK_END}/api/courses/edit/${id}`, formValues);
   dispatch({ type: EDIT_COURSE, payload: res.data })
 }
+
 export const deleteCourse = (id) => async dispatch => {
   await axios.delete(`${BACK_END}/api/courses/delete/${id}`);
   dispatch({ type: DELETE_COURSE, payload: id });

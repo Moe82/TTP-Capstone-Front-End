@@ -1,3 +1,3 @@
-const BACK_END = "http://localhost:8190"
+const BACK_END = "https://attendance-tracker.netlify.app"
 
 export default BACK_END

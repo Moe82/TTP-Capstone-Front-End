@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import {reducer as formReducer} from 'redux-form';
-import courseReducer from './player/courseReducer';
-import studentReducer from './player/studentReducer';
+import courseReducer from './student/courseReducer';
+import studentReducer from './student/studentReducer';
 
 // Reducers
 // import playerReducer from './player/player.reducer';

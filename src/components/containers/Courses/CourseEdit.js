@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { fetchCourse } from '../../../redux/player/courseReducer';
-import { editCourse } from '../../../redux/player/courseReducer';
+import { fetchCourse } from '../../../redux/student/courseReducer';
+import { editCourse } from '../../../redux/student/courseReducer';
 
-import history from '../../../history';
+
 class CourseEdit extends React.Component {
     componentDidMount() {
         this.props.fetchCourse(this.props.match.params.id);
