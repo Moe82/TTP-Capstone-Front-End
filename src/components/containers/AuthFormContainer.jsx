@@ -30,6 +30,7 @@ class AuthFormContainer extends Component {
   render() {
     return (
       <div>
+        {console.log(this.props)}
         {!this.props.isLoggedIn ?  
           <AuthFormView
             name={this.props.name}

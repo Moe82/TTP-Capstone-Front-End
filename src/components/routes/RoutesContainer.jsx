@@ -4,7 +4,7 @@ import RoutesView from "./RoutesView";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout, me } from "../../redux/teacher";
-import { purge } from "../../redux/student/courseReducer";
+import { purge } from "../../redux/course/courseReducer";
 import { purgeStudents } from "../../redux/student/studentReducer";
 import { NavbarContainer } from '../containers'
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { fetchCourse } from '../../../redux/student/courseReducer';
-import { editCourse } from '../../../redux/student/courseReducer';
+import { fetchCourse, editCourse  } from '../../../redux/course/courseReducer';
+;
 
 
 class CourseEdit extends React.Component {

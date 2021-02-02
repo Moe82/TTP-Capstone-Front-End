@@ -14,8 +14,9 @@ export const createStudent = (formValues, courseId) => async (dispatch) => {
 }
 
 export const fetchStudents = (courseId) => async (dispatch) => {
-    const res = await Axios.get(`${BACK_END}/api/students/${courseId}`);
-    dispatch({type:FETCH_STUDENTS,payload:res.data});
+  console.log("***",courseId)
+  const res = await Axios.get(`${BACK_END}/api/students/${courseId}`);
+  dispatch({type:FETCH_STUDENTS,payload:res.data});
 }
 
 export const purgeStudents =  () => async dispatch => {
@@ -35,7 +36,7 @@ export default (state = {}, action) => {
         case CREATE_STUDENT:
             return { ...state, [action.payload.id]: action.payload };
         case FETCH_STUDENTS:
-            return { ...state, ..._.mapKeys(action.payload, 'id') }
+            return action.payload;
         default:
             return state;
     }

@@ -17,11 +17,9 @@ export default function NavbarView(props) {
             <Nav className="mr-auto">
               <Nav.Link ></Nav.Link>
               <Nav.Link>About</Nav.Link>
-              <Nav.Link>Contact</Nav.Link>
             </Nav> :
             <Nav className="mr-auto">
               <Nav.Link>Courses</Nav.Link>
-              <Nav.Link>Settings</Nav.Link>
             </Nav>
         } 
         {

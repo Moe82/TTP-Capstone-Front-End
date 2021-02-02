@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { createCourse, fetchCourses, deleteCourse } from '../../../redux/student/courseReducer';
+import { createCourse, fetchCourses, deleteCourse } from '../../../redux/course/courseReducer';
 
 class CourseList extends React.Component {
   componentDidMount = () => {
@@ -33,25 +33,6 @@ class CourseList extends React.Component {
     this.props.createCourse(formValues, this.props.teacherId);
   }
 
-  renderList() {
-    return this.props.courses.map(course => {
-      return (
-        <div className="item" key={course.id}>
-          <div className="right floated content">
-            <Link className="ui button teal" to={`/course/${course.id}/students`}>Students</Link>
-            <Link to={`/course/upload/${course.id}`} className="ui button yellow">Upload attendance</Link>
-            <Link to={`/course/edit/${course.id}`} className="ui button green" courseId={course.id}>Edit</Link>
-            <Link onClick={() => { this.props.history.push(`/course/delete/${course.id}`) }} className="ui button negative">Delete</Link>
-          </div>
-          <div className="content" style={{ fontSize: '1.5rem' }}>
-            {course.name} 
-            <Link to = {`/course/${course.id}/attendance`}style ={{marginLeft:'3qrem'}}className = "ui button primary">Attendance</Link>
-          </div>
-        </div>
-
-      )
-    })
-  }
 
   render() {
     return (
@@ -62,26 +43,31 @@ class CourseList extends React.Component {
           <button style={{backgroundColor:'#AE81FF'}}  className="ui button primary">Add Corurse</button>
         </form>
         <br/><br/>
-        <h1>Courses:</h1>
-        <div className="ui celled list">
-          {
-            this.props.courses.map(course => {
-              return (
-              <div className="item" key={course.id}>
-                <div className="right floated content">
-                  <Link className="ui button teal" to={`/course/${course.id}/students`}>Students</Link>
-                  <Link to={`/course/upload/${course.id}`} className="ui button yellow">Upload attendance</Link>
-                  <Link to={`/course/edit/${course.id}`} className="ui button green" courseId={course.id}>Edit</Link>
-                  <Link onClick={() => { this.props.history.push(`/course/delete/${course.id}`) }} className="ui button negative">Delete</Link>
-                </div>
-                <div className="content" style={{ fontSize: '1.5rem' }}>
-                  {course.name} 
-                  <Link to = {`/course/${course.id}/attendance`}style ={{marginLeft:'3qrem'}}className = "ui button primary">Attendance</Link>
-                </div>
-              </div>)
-            })
-          }
-        </div>
+        {this.props.courses.length == 0 ? null : 
+          <div>
+            <h1>Courses:</h1>
+            <div className="ui celled list">
+              {
+                this.props.courses.map(course => {
+                  return (
+                  <div className="item" key={course.id}>
+                    <div className="right floated content">
+                      <Link className="ui button teal" to={`/course/${course.id}/students`}>Students</Link>
+                      <Link to={`/course/upload/${course.id}`} className="ui button yellow">Upload attendance</Link>
+                      <Link to={`/course/edit/${course.id}`} className="ui button green" courseId={course.id}>Edit</Link>
+                      <Link onClick={() => { this.props.history.push(`/course/delete/${course.id}`) }} className="ui button negative">Delete</Link>
+                      <Link to = {`/course/${course.id}/attendance`}className = "ui button primary">Attendance</Link>
+                    </div>
+                    <div className="content" style={{ fontSize: '1.5rem' }}>
+                      {course.name} 
+                    </div>
+                  </div>)
+                })
+              }
+            </div>
+            </div>
+        }
+        
       </div>
 
     );

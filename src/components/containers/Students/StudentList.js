@@ -6,7 +6,6 @@ import { purgeStudents, fetchStudents, createStudent } from '../../../redux/stud
 class StudentList extends React.Component {
   
   componentDidMount = () => {
-    this.props.purgeStudents()
     this.props.fetchStudents(this.props.match.params.id)
   }
   
