@@ -19,12 +19,12 @@ export default function NavbarView(props) {
               <Nav.Link>About</Nav.Link>
             </Nav> :
             <Nav className="mr-auto">
-              <Nav.Link>Courses</Nav.Link>
+              <Nav.Link href="/course">Courses</Nav.Link>
             </Nav>
         } 
         {
           !props.isLoggedIn ?
-          <Nav.Link>Log in</Nav.Link> :
+          <Nav.Link href="/login">Log in</Nav.Link> :
           <Nav>
             <Nav.Link onClick={()=> {
               props.purgeCourses()
