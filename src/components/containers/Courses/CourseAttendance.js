@@ -26,9 +26,6 @@ class CourseAttendance extends React.Component {
             break;
         }
         let n = dates.length;
-        for (let i = 0; i < n; i++) {
-            dates[i] = (dates[i].substr(3))
-        }
         return dates.map(date => {
             return (
                 <th>{date}</th>
