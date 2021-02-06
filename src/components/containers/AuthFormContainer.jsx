@@ -11,26 +11,36 @@ class AuthFormContainer extends Component {
     this.state = {
       email: "",
       password: "",
-      typing: false
+      passwordVerify: "",
+      typing: false,
+      passwordMatchError: false
     }
   }
 
   handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
     this.setState({ typing: true })
+    this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     this.setState({ typing: false})
     event.preventDefault();
     const formName = event.target.name;
+    if (formName == "signup") {
+      if (!(this.state.passwordVerify === this.state.password)) {
+        this.setState({passwordMatchError: true})
+      } else {
+        this.setState({passwordMatchError: false})
+        await this.props.loginOrSignup(this.state.email, this.state.password, formName)
+      }
+    } else {
     this.props.loginOrSignup(this.state.email, this.state.password, formName);
   }
+}
 
   render() {
     return (
       <div>
-        {console.log(this.props)}
         {!this.props.isLoggedIn ?  
           <AuthFormView
             name={this.props.name}
@@ -40,8 +50,9 @@ class AuthFormContainer extends Component {
             handleSubmit={this.handleSubmit}
             isLoggedIn={this.props.isLoggedIn}
             userEmail={this.props.userEmail}
-            typing={this.state.typing}
+            userIsTyping={this.state.typing}
             history={this.props.history}
+            passwordMatchError={this.state.passwordMatchError}
           />
         : this.props.history.push("/course")}
       </div>
