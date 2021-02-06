@@ -18,6 +18,7 @@ class UploadAttendanceContainer extends Component {
     let binaryStr = readerEvt.target.result;
     this.setState({base64TextString:btoa(binaryStr)})
   }
+
   handleChange = (event) => { 
     let file = event.target.files[0]
     if(file){
@@ -41,7 +42,7 @@ class UploadAttendanceContainer extends Component {
     axios.post(`${BACK_END}/api/students/attendance`, {
       imgToBase64: this.state.base64TextString,
       id: this.props.match.params.id,
-      date: this.state.selectDate.toDateString()
+      date: this.state.selectDate.toDateString().substring(3)
     }).then(res => { console.log(this.state.selectDate); this.setState({success:true})}).catch((error) => console.error(error));
     }
     
