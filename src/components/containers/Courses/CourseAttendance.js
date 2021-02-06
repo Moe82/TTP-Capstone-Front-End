@@ -5,17 +5,17 @@ import BACK_END from '../../../back-end-url'
 class CourseAttendance extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data:{}};
+        this.state = { data: {} };
     }
     componentDidMount() {
-      axios.get(`${BACK_END}/api/students/attendance/${this.props.match.params.id}`)
-        .then(response => {
-          console.log("DATA:", response)
-          this.setState({
-            data: response.data.data
-          })
-        })
-        
+        axios.get(`${BACK_END}/api/students/attendance/${this.props.match.params.id}`)
+            .then(response => {
+                console.log("DATA:", response)
+                this.setState({
+                    data: response.data.data
+                })
+            })
+
     }
     renderDates() {
         const dates = [];
@@ -26,6 +26,9 @@ class CourseAttendance extends React.Component {
             break;
         }
         let n = dates.length;
+        for (let i = 0; i < n; i++) {
+            dates[i] = (dates[i].substr(3))
+        }
         return dates.map(date => {
             return (
                 <th>{date}</th>
@@ -38,7 +41,7 @@ class CourseAttendance extends React.Component {
             studentName.push(name)
         }
         return studentName.map(student => {
-            console.log(student);
+
             return (
                 <tr>
                     <td>{student}</td>
@@ -53,7 +56,6 @@ class CourseAttendance extends React.Component {
         for (const [key, value] of Object.entries(this.state.data[student])) {
             attendances.push(value);
         }
-        console.log(attendances);
         return attendances.map(attendance => {
             return (
                 <td>{attendance}</td>

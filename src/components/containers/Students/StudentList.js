@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm,reset } from 'redux-form';
 import { connect } from 'react-redux';
 import { purgeStudents, fetchStudents, createStudent } from '../../../redux/student/studentReducer';
 
@@ -19,8 +19,9 @@ class StudentList extends React.Component {
     )
   }
     
-  onSubmit = (formValues) => {
+  onSubmit = (formValues,dispatch) => {
     this.props.createStudent(formValues, this.props.match.params.id);
+    dispatch(reset('studentCreate'));
   }
     
   renderList() {

@@ -1,10 +1,13 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
+import { Field, reduxForm,reset} from 'redux-form';
+import { connect} from 'react-redux';
 import { Link } from 'react-router-dom'
 import { createCourse, fetchCourses, deleteCourse } from '../../../redux/course/courseReducer';
-
 class CourseList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { courseName: '' }
+  }
   componentDidMount = () => {
     // not good logic, but it fixes the delete button issue for now. 
     if (this.props.courses.length == 0) {
@@ -24,13 +27,14 @@ class CourseList extends React.Component {
     return (
       <div className="field">
         <label>{label}</label>
-        <input style={{width:'25%', borderColor:'#AE81FF'}} {...input} />
+        <input  style={{ width: '25%', borderColor: '#AE81FF' }} {...input}  />
         <div>{this.renderError(meta)}</div>
       </div>
     )
   }
-  onSubmit = (formValues) => {
+  onSubmit = (formValues,dispatch) => {
     this.props.createCourse(formValues, this.props.teacherId);
+    dispatch(reset('courseCreate'));
   }
 
 
@@ -39,33 +43,33 @@ class CourseList extends React.Component {
       <div>
         User: {this.props.email} <br /><br />
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-          <Field name="name" component={this.renderInput} label="Add a course:"/>
-          <button style={{backgroundColor:'#AE81FF'}}  className="ui button primary">Add Corurse</button>
+          <Field  name="name" component={this.renderInput} label="Add a course:" />
+          <button style={{ backgroundColor: '#AE81FF' }} className="ui button primary">Add Corurse</button>
         </form>
-        <br/><br/>
-        {this.props.courses.length == 0 ? null : 
+        <br /><br />
+        {this.props.courses.length == 0 ? null :
           <div>
             <h1>Courses:</h1>
             <div className="ui celled list">
               {
                 this.props.courses.map(course => {
                   return (
-                  <div className="item" key={course.id}>
-                    <div className="right floated content">
-                    <Link to={`/course/edit/${course.id}`} className="ui button green" courseId={course.id}>Edit name</Link>
-                    <Link onClick={() => { this.props.history.push(`/course/delete/${course.id}`) }} className="ui button negative">Delete</Link>
-                      <Link className="ui button teal" to={`/course/${course.id}/students`}>Add Students</Link>
-                      <Link to={`/course/upload/${course.id}`} className="ui button yellow">Upload attendance</Link>
-                      <Link to = {`/course/${course.id}/attendance`}className = "ui button primary">View Attendance</Link>
-                    </div>
-                    <div className="content" style={{ fontSize: '1.5rem' }}>
-                      {course.name} 
-                    </div>
-                  </div>)
+                    <div className="item" key={course.id}>
+                      <div className="right floated content">
+                        <Link to={`/course/edit/${course.id}`} className="ui button green" courseId={course.id}>Edit name</Link>
+                        <Link onClick={() => { this.props.history.push(`/course/delete/${course.id}`) }} className="ui button negative">Delete</Link>
+                        <Link className="ui button teal" to={`/course/${course.id}/students`}>Add Students</Link>
+                        <Link to={`/course/upload/${course.id}`} className="ui button yellow">Upload attendance</Link>
+                        <Link to={`/course/${course.id}/attendance`} className="ui button primary">View Attendance</Link>
+                      </div>
+                      <div className="content" style={{ fontSize: '1.5rem' }}>
+                        {course.name}
+                      </div>
+                    </div>)
                 })
               }
             </div>
-            </div>
+          </div>
         }
       </div>
     );
@@ -86,7 +90,6 @@ const formWrapped = reduxForm({
 })(CourseList);
 
 
-
 const mapStateToProps = (state) => {
   return {
     courses: Object.values(state.courses),
@@ -94,5 +97,4 @@ const mapStateToProps = (state) => {
     email: state.teacher.email
   }
 }
-
 export default connect(mapStateToProps, { createCourse, fetchCourses, deleteCourse })(formWrapped);
