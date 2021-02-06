@@ -42,7 +42,7 @@ class UploadAttendanceContainer extends Component {
     axios.post(`${BACK_END}/api/students/attendance`, {
       imgToBase64: this.state.base64TextString,
       id: this.props.match.params.id,
-      date: this.state.selectDate.toDateString().substring(3)
+      date: this.state.selectDate.toDateString().substring(2)
     }).then(res => { console.log(this.state.selectDate); this.setState({success:true})}).catch((error) => console.error(error));
     }
     
