@@ -44,7 +44,7 @@ class CourseList extends React.Component {
         User: {this.props.email} <br /><br />
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
           <Field  name="name" component={this.renderInput} label="Add a course:" />
-          <button style={{ backgroundColor: '#AE81FF' }} className="ui button primary">Add Corurse</button>
+          <button style={{ backgroundColor: '#AE81FF' }} className="ui button primary">Add Course</button>
         </form>
         <br /><br />
         {this.props.courses.length == 0 ? null :
