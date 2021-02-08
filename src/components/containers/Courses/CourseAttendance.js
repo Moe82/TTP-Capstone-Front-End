@@ -3,49 +3,44 @@ import axios from 'axios';
 import BACK_END from '../../../back-end-url'
 
 class CourseAttendance extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { data: {} };
-    }
-    componentDidMount() {
-        axios.get(`${BACK_END}/api/students/attendance/${this.props.match.params.id}`)
-            .then(response => {
-                console.log("DATA:", response)
-                this.setState({
-                    data: response.data.data
-                })
-            })
+  constructor(props) {
+    super(props);
+    this.state = { data: {} };
+  }
 
+  componentDidMount() {
+    axios.get(`${BACK_END}/api/students/attendance/${this.props.match.params.id}`)
+    .then(response => {
+      this.setState({
+        data: response.data.data
+      })
+    })
+  }
+
+  renderDates() {
+    const dates = [];
+    for (let name of Object.keys(this.state.data)) {
+      for (let date in this.state.data[name]) {
+        dates.push(date);
+      }
+      break;
     }
-    renderDates() {
-        const dates = [];
-        for (let name of Object.keys(this.state.data)) {
-            for (let date in this.state.data[name]) {
-                dates.push(date);
-            }
-            break;
-        }
-        let n = dates.length;
-        return dates.map(date => {
-            return (
-                <th>{date}</th>
-            )
-        })
-    }
+    let n = dates.length;
+    return dates.map(date => { return (<th>{date}</th>) })
+  }
     renderStudentList() {
-        const studentName = [];
-        for (let name in this.state.data) {
-            studentName.push(name)
-        }
-        return studentName.map(student => {
-
-            return (
-                <tr>
-                    <td>{student}</td>
-                    {this.renderAttendance(student)}
-                </tr>
-            )
-        })
+      const studentName = [];
+      for (let name in this.state.data) {
+          studentName.push(name)
+      }
+      return studentName.map(student => {
+        return (
+          <tr>
+            <td>{student}</td>
+            {this.renderAttendance(student)}
+          </tr>
+        )
+      })
     }
     renderAttendance(student) {
         const attendances = [];
