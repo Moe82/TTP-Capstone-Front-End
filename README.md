@@ -1,13 +1,4 @@
   <h1 align="center">Attendance Tracker Frontend</h1>
-    <br />
-    <br />
-    <!-- ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a> -->
-  </p>
-</p>
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
