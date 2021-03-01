@@ -44,12 +44,8 @@
 
 <!-- Video Demo -->
 
-https://user-images.githubusercontent.com/61551500/109531810-5ed29f00-7a86-11eb-97b9-6417ce522a3f.mov
-
-
-
 ### Video Demo
-
+https://user-images.githubusercontent.com/61551500/109531810-5ed29f00-7a86-11eb-97b9-6417ce522a3f.mov
 <!-- GETTING STARTED -->
 
 ## Getting Started
