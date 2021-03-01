@@ -1,7 +1,4 @@
-  <h1 align="center">TTP FrontEnd Template</h1>
-
-  <p align="center">
-    Everything important to guide you to set up and get your Front End
+  <h1 align="center">Attendance Tracker Frontend</h1>
     <br />
     <br />
     <!-- ·
@@ -19,6 +16,7 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#video-demo">Video Demo</a></li>
       </ul>
     </li>
     <li>
@@ -28,10 +26,10 @@
       </ul>
     </li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
 
   </ol>
 </details>
+
 
 <!-- BUILT WITH -->
 
@@ -43,6 +41,14 @@
 | [Redux](https://redux.js.org/)           | [:notebook:](https://redux.js.org/tutorials/essentials/part-1-overview-concepts) |
 | [React-Router](https://reactrouter.com/) | [:notebook:](https://reactrouter.com/web/guides/quick-start)                     |
 | [Axios](https://github.com/axios/axios)  | [:notebook:](https://github.com/axios/axios)                                     |
+
+<!-- Video Demo -->
+
+https://user-images.githubusercontent.com/61551500/109531810-5ed29f00-7a86-11eb-97b9-6417ce522a3f.mov
+
+
+
+### Video Demo
 
 <!-- GETTING STARTED -->
 
@@ -57,7 +63,7 @@ To get a local copy up and running follow these simple example steps.
 1. Clone the repo
 
    ```sh
-   git clone https://github.com/DBorhara/ttp-frontend-scaffold.git
+   git clone https://github.com/Moe82/TTP-Capstone-Front-End.git
    ```
 
 2. Install NPM packages
@@ -77,11 +83,3 @@ To get a local copy up and running follow these simple example steps.
 ## License
 
 Distributed under the ISC License.
-
-<!-- CONTACT -->
-
-## Contact
-
-Depak Borhara - [@dborhara](https://twitter.com/Dborhara) - depakborhara@gmail.com
-
-Project Link: [https://github.com/DBorhara/ttp-frontend-scaffold](https://github.com/DBorhara/ttp-frontend-scaffold)
