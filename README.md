@@ -1,26 +1,10 @@
-  <h1 align="center">Attendance Tracker Frontend</h1>
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-        <li><a href="#video-demo">Video Demo</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#license">License</a></li>
+<h1 align="center">Attendance Tracker Frontend</h1>
 
-  </ol>
-</details>
 
+<!-- Video Demo -->
+
+### Video Demo
+https://user-images.githubusercontent.com/61551500/109531810-5ed29f00-7a86-11eb-97b9-6417ce522a3f.mov
 
 <!-- BUILT WITH -->
 
@@ -33,10 +17,6 @@
 | [React-Router](https://reactrouter.com/) | [:notebook:](https://reactrouter.com/web/guides/quick-start)                     |
 | [Axios](https://github.com/axios/axios)  | [:notebook:](https://github.com/axios/axios)                                     |
 
-<!-- Video Demo -->
-
-### Video Demo
-https://user-images.githubusercontent.com/61551500/109531810-5ed29f00-7a86-11eb-97b9-6417ce522a3f.mov
 <!-- GETTING STARTED -->
 
 ## Getting Started
