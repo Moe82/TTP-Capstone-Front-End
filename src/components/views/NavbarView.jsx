@@ -16,7 +16,7 @@ export default function NavbarView(props) {
           !props.isLoggedIn ? 
             <Nav className="mr-auto">
               <Nav.Link ></Nav.Link>
-              <Nav.Link>About</Nav.Link>
+              {/* <Nav.Link>About</Nav.Link> */}
             </Nav> :
             <Nav className="mr-auto">
               <Nav.Link href="/course">Courses</Nav.Link>
