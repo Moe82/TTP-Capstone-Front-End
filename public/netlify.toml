@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/feed/*"
-  to = "https://attendancetracker-backend.herokuapp.com/:splat"
+  to = "https://ttp-capstone-backend-production.up.railway.app/:splat"
   status = 200
   force = true
   

@@ -1,3 +1,3 @@
-const BACK_END = "https://tpp-capstone-backend-6b8944cb3d46.herokuapp.com"
+const BACK_END = "ttp-capstone-backend-production.up.railway.app"
 
 export default BACK_END
